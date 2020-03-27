@@ -21,6 +21,11 @@ def register(request):
             if user is not None:
                 do_login(request, user)
                 return redirect('/')
+
+    # Si queremos borramos los campos de ayuda
+    form.fields['username'].help_text = None
+    form.fields['password1'].help_text = None
+    form.fields['password2'].help_text = None
     return render(request, "users/register.html", {'form': form})
 
 def login(request):
